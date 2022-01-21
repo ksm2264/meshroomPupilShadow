@@ -1,0 +1,27 @@
+{"CameraInit_1": {"intrinsics": [
+                    {
+                        "intrinsicId": p_match_this,
+                        "pxInitialFocalLength": -1.0,
+                        "pxFocalLength": 903.925,
+                        "type": "radial3",
+                        "width": 1920,
+                        "height": 1080,
+                        "serialNumber": "/media/karl/94326BCE326BB3C0/gazePrediction/JAC_walk_1_frames",
+                        "principalPoint": {
+                            "x": 960.0,
+                            "y": 540.0
+                        },
+                        "initializationMode": "calibrated",
+                        "distortionParams": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "locked": false
+                    }
+                ],
+                "sensorDatabase": "$WORK/Meshroom-2019.2.0/aliceVision/share/aliceVision/cameraSensors.db",
+                "defaultFieldOfView": 93.4944,
+                "groupCameraFallback": "folder",
+                "verboseLevel": "info"}}
+

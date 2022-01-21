@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -J gpu_SUBJ_WALKNUM
+#SBATCH -e error_logs/gpu_SUBJ_WALKNUM.%j.err
+#SBATCH -o output_logs/gpu_SUBJ_WALKNUM.%j.out
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -p gpu-a100
+#SBATCH -t 24:00:00
+#SBATCH -A WalkingAnalysis
+#SBATCH --mail-user=karl.muller@utexas.edu
+#SBATCH --mail-type=all
+
+module load cuda
+
+$WORK/Meshroom*/meshroom_compute $SCRATCH/MonocularProject/SUBJ/meshroom_output/WALKNUM/this_graph.mg --node DepthMap_1 --forceCompute --cache $SCRATCH/MonocularProject/SUBJ/meshroom_output/WALKNUM/
