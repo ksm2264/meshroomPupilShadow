@@ -2,5 +2,5 @@
 
 collection of files / dependencies.
 
-Set up rclone remote on TACC, plug in drive folder and it handles the rest
+Set up rclone remote on TACC, plug in drive folder and it handles the rest (lol not really though)
 
