@@ -7,7 +7,7 @@
 #SBATCH -p normal
 #SBATCH -t 24:00:00
 #SBATCH -A IBN21023
-#SBATCH --mail-user=karl.muller@utexas.edu
+#SBATCH --mail-user=vrlabaustin@gmail.com
 #SBATCH --mail-type=all
 
 $WORK/Meshroom*/meshroom_compute $SCRATCH/MonocularProject/SUBJ/meshroom_output/WALKNUM/this_graph.mg --node DepthMapFilter_1 --forceCompute --cache $SCRATCH/MonocularProject/SUBJ/meshroom_output/WALKNUM/
