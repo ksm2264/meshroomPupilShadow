@@ -7,7 +7,7 @@
 #SBATCH -p gpu-a100
 #SBATCH -t 24:00:00
 #SBATCH -A IBN21023
-#SBATCH --mail-user=karl.muller@utexas.edu
+#SBATCH --mail-user=vrlabaustin@gmail.com
 #SBATCH --mail-type=all
 
 module load cuda
