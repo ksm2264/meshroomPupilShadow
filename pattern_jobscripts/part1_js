@@ -7,7 +7,7 @@
 #SBATCH -p normal
 #SBATCH -t 24:00:00
 #SBATCH -A IBN21023
-#SBATCH --mail-user=karl.muller@utexas.edu
+#SBATCH --mail-user=vrlabaustin@gmail.com
 #SBATCH --mail-type=all
 
 $WORK/Meshroom*/meshroom_photogrammetry --input $SCRATCH/MonocularProject/SUBJ/subclip_frames/WALKNUM/ --output $SCRATCH/MonocularProject/SUBJ/meshroom_output/WALKNUM --save $SCRATCH/MonocularProject/id_probe_SUBJ_WALKNUM.mg
