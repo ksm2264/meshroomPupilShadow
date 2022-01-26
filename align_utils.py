@@ -100,9 +100,11 @@ def getCensRotms(json_path):
     return cens,rotms
 
 def getMeshroomData(subjWalkDir):
+    ply_path = glob.glob(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.ply')[0]
+    sfm_path = glob.glob(subjWalkDir+os.sep+'StructureFromMotion'+os.sep+'*'+os.sep+'cameras.sfm')[0]
     
-    pc_array =np.asarray(o3d.io.read_point_cloud(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.ply').points)
-    cens,rotms = getCensRotms(subjWalkDir+os.sep+'StructureFromMotion'+os.sep+'*'+os.sep+'cameras.sfm')
+    pc_array =np.asarray(o3d.io.read_point_cloud(ply_path).points)
+    cens,rotms = getCensRotms(sfm_path)
     
     return pc_array,cens,rotms
 
