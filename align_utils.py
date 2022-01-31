@@ -148,11 +148,13 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
     imageBasedEyeVec[:,1] = -imageBasedEyeVec[:,1];
     imageBasedEyeVec = normr(imageBasedEyeVec)
     
-    lGaze=normr(thisWalk.lGazeXYZ-thisWalk.lEyeballCenterXYZ)
-    rGaze=normr(thisWalk.rGazeXYZ-thisWalk.rEyeballCenterXYZ)
-    
-    shadow_coord_eyeVec = np.mean(np.stack([lGaze,rGaze],axis=2),axis=2)
-    shadow_coord_eyeVec = normr(shadow_coord_eyeVec)
+    try
+        shadow_coord_eyeVec=normr(thisWalk.lGazeXYZ-thisWalk.lEyeballCenterXYZ)
+    catch
+        shadow_coord_eyeVec=normr(thisWalk.rGazeXYZ-thisWalk.rEyeballCenterXYZ)
+    end
+    %shadow_coord_eyeVec = np.mean(np.stack([lGaze,rGaze],axis=2),axis=2)
+    %shadow_coord_eyeVec = normr(shadow_coord_eyeVec)
     
     shadow_coord_eyeVec_ds = np.zeros((index[-1]+1,3))
     
