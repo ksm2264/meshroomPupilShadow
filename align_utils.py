@@ -111,7 +111,7 @@ def getMeshroomData(subjWalkDir):
 def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
     
     
-    allWalks = sio.loadmat(subjWalkDir+'/../../allWalks_n.mat',struct_as_record=False,squeeze_me=True)['allWalks']
+    allWalks = sio.loadmat(subjWalkDir+'/../../Monocular_allWalks.mat',struct_as_record=False,squeeze_me=True)['allWalks']
     walkNum = int(subjWalkDir.split(os.sep)[-1])-1
     thisWalk = allWalks[walkNum]
     
@@ -188,7 +188,7 @@ def alignPupilShadowMesh(pc_array,cens,rotms,subjWalkDir,orig2alignedMat):
     
     tree_XYZ = KDTree(pc_array)
     tree_XZ = KDTree(pc_array[:,(0,2)])
-    allWalks = sio.loadmat(subjWalkDir+'/../../JAC.mat',struct_as_record=False,squeeze_me=True)['allWalks']
+    allWalks = sio.loadmat(subjWalkDir+'/../../Monocular_allWalks.mat',struct_as_record=False,squeeze_me=True)['allWalks']
     walkNum = int(subjWalkDir.split(os.sep)[-1])-1
     thisWalk = allWalks[walkNum]
     wfi = thisWalk.worldFrameIndex
@@ -284,7 +284,7 @@ def getGazeFromBlender(pack_path):
     return gazeXYZ
 
 def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
-    allWalks = sio.loadmat(subjWalkDir+'/../../JAC.mat',struct_as_record=False,squeeze_me=True)['allWalks']
+    allWalks = sio.loadmat(subjWalkDir+'/../../Monocular_allWalks.mat',struct_as_record=False,squeeze_me=True)['allWalks']
     walkNum = int(subjWalkDir.split(os.sep)[-1])-1
     thisWalk = allWalks[walkNum]
     index = thisWalk.worldFrameIndex
