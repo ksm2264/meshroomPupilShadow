@@ -292,11 +292,13 @@ def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
     index = thisWalk.worldFrameIndex
     index = index-index[0]
     
-    lGaze=normr(thisWalk.lGazeXYZ-thisWalk.lEyeballCenterXYZ)
-    rGaze=normr(thisWalk.rGazeXYZ-thisWalk.rEyeballCenterXYZ)
+    try:
+        shadow_coord_eyeVec=normr(thisWalk.lGazeXYZ-thisWalk.lEyeballCenterXYZ)
+    except:
+        shadow_coord_eyeVec=normr(thisWalk.rGazeXYZ-thisWalk.rEyeballCenterXYZ)
     
-    shadow_coord_eyeVec = np.mean(np.stack([lGaze,rGaze],axis=2),axis=2)
-    shadow_coord_eyeVec = normr(shadow_coord_eyeVec)
+    #shadow_coord_eyeVec = np.mean(np.stack([lGaze,rGaze],axis=2),axis=2)
+    #shadow_coord_eyeVec = normr(shadow_coord_eyeVec)
     
     shadow_coord_eyeVec_ds = np.zeros((index[-1]+1,3))
     
