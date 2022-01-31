@@ -73,7 +73,11 @@ def getOptimRotation(mat_A,mat_B):
     
 
 def getSubjWalkList(subj_name):
-    return glob.glob(base_dir+subj_name+os.sep+'meshroom_output'+os.sep+'*')
+    subjWalkList=glob.glob(base_dir+subj_name+os.sep+'meshroom_output'+os.sep+'*'+os.sep+'Texturing/')
+    
+    subjWalkList = ['/'.join(thisVal.split('/')[:-2]) for thisVal in subjWalkList]
+    
+    return subjWalkList
 
 def getCensRotms(json_path):
     
