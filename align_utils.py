@@ -22,7 +22,7 @@ work_dir = os.popen('echo $WORK').read()[:-1]
 
 #base_dir = '/home/karl/meshroomPupilShadow_on_TACC/dev_mesh_align_step/data/'
 base_dir = scratch_dir+os.sep+'MonocularProject'+os.sep
-blend_base_dir = './'
+blend_base_dir = work_dir+'/meshroomPupilShadow/'
 blender_exec_path = 'flatpak run --user --env=QT_QPA_PLATFORM=offscreen org.blender.Blender'
 
 FL = 2100/2.3232
