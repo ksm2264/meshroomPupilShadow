@@ -140,7 +140,10 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
         hy_ds[:,dim] = accumarray(index,hy[:,dim],np.mean)
         hz_ds[:,dim] = accumarray(index,hz[:,dim],np.mean)
         
-    
+    if len(cens)<len(hx_ds):
+        hx_ds = hx_ds[:-1]
+        hy_ds = hy_ds[:-1]
+        hz_ds = hz_ds[:-1]
         
     shadow_rotms = np.zeros((cens.shape[0],3,3))
     shadow_rotms[:,0,:] = hx_ds
@@ -157,6 +160,9 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
     imageBasedEyeVec[:,1] = -imageBasedEyeVec[:,1];
     imageBasedEyeVec = normr(imageBasedEyeVec)
     
+    
+      
+    
     try:
         shadow_coord_eyeVec=normr(thisWalk.lGazeXYZ-thisWalk.lEyeballCenterXYZ)
     except:
@@ -169,6 +175,9 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
     
     for dim in range(3):
         shadow_coord_eyeVec_ds[:,dim] = accumarray(index,shadow_coord_eyeVec[:,dim],np.mean)
+    
+    if len(cens)<len(imageBasedEyeVec):
+        imageBasedEyeVec = imageBasedEyeVec[:-1]
     
     rotms[:,(0,2),:] = rotms[:,(2,0),:]
     rotms[:,1,:] = -rotms[:,1,:]    
