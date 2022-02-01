@@ -108,6 +108,7 @@ def getCensRotms(json_path):
     return cens,rotms
 
 def getMeshroomData(subjWalkDir):
+    print(subjWalkDir)
     ply_path = glob.glob(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.ply')[0]
     sfm_path = glob.glob(subjWalkDir+os.sep+'StructureFromMotion'+os.sep+'*'+os.sep+'cameras.sfm')[0]
     
