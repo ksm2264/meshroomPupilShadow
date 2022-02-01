@@ -185,10 +185,6 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
         imageBasedEyeVec = imageBasedEyeVec[:-1]
         shadow_coord_eyeVec_ds = shadow_coord_eyeVec_ds[:-1]
     
-    if len(cens)>len(imageBasedEyeVec):
-        cens = cens[:-1]
-        rotms = rotms[:-1]
-    
     rotms[:,(0,2),:] = rotms[:,(2,0),:]
     rotms[:,1,:] = -rotms[:,1,:]    
     
