@@ -220,7 +220,7 @@ def alignPupilShadowMesh(pc_array,cens,rotms,subjWalkDir,orig2alignedMat):
     
     
     
-    shadow_ds = np.zeros((cens.shape[0],shadow.shape[1],shadow.shape[2]))
+    shadow_ds = np.zeros((wfi[-1]+1,shadow.shape[1],shadow.shape[2]))
 
     for dim_marker in range(shadow.shape[1]):
         for dim in range(3):
