@@ -329,7 +329,7 @@ def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
         
     
         
-    gazeVec = normr(shadow_coord_eyeVec_ds)
+    
     
     objPath = glob.glob(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.obj')[0]
     orig2alignedMat = pupilShadowMeshMat_dict['orig2alignedMat']
@@ -337,6 +337,7 @@ def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
     
     if len(cens)<len(shadow_coord_eyeVec_ds):
         shadow_coord_eyeVec_ds = shadow_coord_eyeVec_ds[:-1]
+    gazeVec = normr(shadow_coord_eyeVec_ds)
     
     np.save(subjWalkDir+os.sep+'blender_pack.npy',{'cens':cens,'gazeVec':gazeVec,'objPath':objPath,'orig2alignedMat':orig2alignedMat})
     pack_path = subjWalkDir+os.sep+'blender_pack.npy'
