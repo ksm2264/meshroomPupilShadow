@@ -14,13 +14,20 @@ this_subj_name = sys.argv[1]
 
 subjWalkList = getSubjWalkList(this_subj_name)
 
+
 for subjWalkDir in subjWalkList:
 
+    skip_rest=False
     if proc_this_walk(subjWalkDir):
-        points,cens,rotms = getMeshroomData(subjWalkDir)
-        points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
-        pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
-        pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
+        try:
+            points,cens,rotms = getMeshroomData(subjWalkDir)
+        except:
+            skip_rest=True
+        
+        if not skip_rest:
+            points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
+            pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
+            pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
 
-        saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
-    
+            saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
+            
