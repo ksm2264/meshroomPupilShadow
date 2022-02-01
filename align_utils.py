@@ -31,6 +31,10 @@ l_foot_idx = 6
 r_foot_idx = 11
 n_scale_factors = 100
 
+def proc_this_walk(subjWalkDir):
+    
+    return os.path.exists(subjWalkDir+os.sep+'pupilShadowMesh.mat')
+
 def accumarray(index,value,agg_func):
     
 
