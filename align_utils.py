@@ -327,6 +327,9 @@ def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
     for dim in range(3):
         shadow_coord_eyeVec_ds[:,dim] = accumarray(index,shadow_coord_eyeVec[:,dim],np.mean)
         
+    if len(cens)<len(shadow_coord_eyeVec_ds):
+        shadow_coord_eyeVec_ds = shadow_coord_eyeVec_ds[:-1]
+        
     gazeVec = normr(shadow_coord_eyeVec_ds)
     
     objPath = glob.glob(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.obj')[0]
