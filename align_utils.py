@@ -226,6 +226,9 @@ def alignPupilShadowMesh(pc_array,cens,rotms,subjWalkDir,orig2alignedMat):
         for dim in range(3):
             shadow_ds[:,dim_marker,dim] = accumarray(wfi,shadow[:,dim_marker,dim],np.mean)
 
+    if len(shadow_ds)>len(cens):
+        shadow_ds = shadow_ds[:-1]
+            
 
     for dim_marker in range(shadow.shape[1]):
         shadow_ds[:,dim_marker,:] = shadow_ds[:,dim_marker,:] - shadow_ds[:,head_marker_idx,:] + cens
