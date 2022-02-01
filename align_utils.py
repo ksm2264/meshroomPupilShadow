@@ -33,7 +33,7 @@ n_scale_factors = 100
 
 def proc_this_walk(subjWalkDir):
     
-    return not os.path.exists(subjWalkDir+os.sep+'pupilShadowMesh.mat')
+    return not os.path.exists(subjWalkDir+os.sep+'pupilShadowMesh.mat') and len(glob.glob(subjWalkDir+os.sep+'Texturing'+os.sep+'*'+os.sep+'texturedMesh.ply'))>0
 
 def accumarray(index,value,agg_func):
     
