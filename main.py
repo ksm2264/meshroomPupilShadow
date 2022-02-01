@@ -7,7 +7,7 @@ Created on Mon Jan 24 14:23:42 2022
 """
 
 import sys
-from align_utils import getSubjWalkList, getMeshroomData, applyOptimalRotation, alignPupilShadowMesh, computeGazeXYZ, saveMatFile
+from align_utils import getSubjWalkList, getMeshroomData, applyOptimalRotation, alignPupilShadowMesh, computeGazeXYZ, saveMatFile, proc_this_walk
 
 this_subj_name = sys.argv[1]
 #this_subj_name = 'JAC'
@@ -16,10 +16,11 @@ subjWalkList = getSubjWalkList(this_subj_name)
 
 for subjWalkDir in subjWalkList:
 
-    points,cens,rotms = getMeshroomData(subjWalkDir)
-    points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
-    pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
-    pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
-    
-    saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
+    if proc_this_walk(subjWalkDir):
+        points,cens,rotms = getMeshroomData(subjWalkDir)
+        points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
+        pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
+        pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
+
+        saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
     
