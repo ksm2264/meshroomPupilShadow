@@ -144,6 +144,11 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
         hx_ds = hx_ds[:-1]
         hy_ds = hy_ds[:-1]
         hz_ds = hz_ds[:-1]
+    
+    if len(cens)>len(hx_ds):
+        cens = cens[:-1]
+        rotms = rotms[:-1]
+    
         
     shadow_rotms = np.zeros((cens.shape[0],3,3))
     shadow_rotms[:,0,:] = hx_ds
@@ -179,6 +184,10 @@ def applyOptimalRotation(pc_array,cens,rotms,subjWalkDir):
     if len(cens)<len(imageBasedEyeVec):
         imageBasedEyeVec = imageBasedEyeVec[:-1]
         shadow_coord_eyeVec_ds = shadow_coord_eyeVec_ds[:-1]
+    
+    if len(cens)>len(imageBasedEyeVec):
+        cens = cens[:-1]
+        rotms = rotms[:-1]
     
     rotms[:,(0,2),:] = rotms[:,(2,0),:]
     rotms[:,1,:] = -rotms[:,1,:]    
@@ -228,6 +237,10 @@ def alignPupilShadowMesh(pc_array,cens,rotms,subjWalkDir,orig2alignedMat):
 
     if len(shadow_ds)>len(cens):
         shadow_ds = shadow_ds[:-1]
+        
+    if len(shadow_ds)<len(cens):
+        cens = cens[:-1]
+        rotms = rotms[:-1]
             
 
     for dim_marker in range(shadow.shape[1]):
@@ -337,6 +350,9 @@ def computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir):
     
     if len(cens)<len(shadow_coord_eyeVec_ds):
         shadow_coord_eyeVec_ds = shadow_coord_eyeVec_ds[:-1]
+    if len(cens)>len(shadow_coord_eyeVec_ds):
+        cens = cens[:-1]
+    
     gazeVec = normr(shadow_coord_eyeVec_ds)
     
     np.save(subjWalkDir+os.sep+'blender_pack.npy',{'cens':cens,'gazeVec':gazeVec,'objPath':objPath,'orig2alignedMat':orig2alignedMat})
