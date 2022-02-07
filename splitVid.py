@@ -7,7 +7,7 @@ import os
 
 scratch_dir = os.popen('echo $SCRATCH').read()[:-1]
 
-mat = sio.loadmat(scratch_dir+os.sep+'MonocularProject'+os.sep+sys.argv[1]+os.sep+'allWalks_n.mat',squeeze_me=True,struct_as_record=False)
+mat = sio.loadmat(scratch_dir+os.sep+'MonocularProject'+os.sep+sys.argv[1]+os.sep+'Monocular_allWalks.mat',squeeze_me=True,struct_as_record=False)
 
 vid_str_in = scratch_dir+os.sep+'MonocularProject'+os.sep+sys.argv[1]+os.sep+'world.mp4'
 
