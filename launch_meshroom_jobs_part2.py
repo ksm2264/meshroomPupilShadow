@@ -25,9 +25,8 @@ n_gpu_slots = 2-int(n_gpu_slots)
 
 if n_gpu_slots>0:
   for fileName in fileNames[:n_gpu_slots]:    
-    for fileName in fileNames:
-      this_js = sys.argv[1]+'_'+fileName+'_gpu_js'
-      os.system('cp pattern_jobscripts/gpu_js all_jobscripts/{JS}'.format(JS=this_js))
-      os.system('sed -i "s/SUBJ/{SUBJ}/g" all_jobscripts/{JS}'.format(SUBJ=sys.argv[1],JS=this_js))
-      os.system('sed -i "s/WALKNUM/{WALKNUM}/g" all_jobscripts/{JS}'.format(WALKNUM=fileName,JS=this_js))
-      os.system('sbatch all_jobscripts/{JS}'.format(JS=this_js))
+    this_js = sys.argv[1]+'_'+fileName+'_gpu_js'
+    os.system('cp pattern_jobscripts/gpu_js all_jobscripts/{JS}'.format(JS=this_js))
+    os.system('sed -i "s/SUBJ/{SUBJ}/g" all_jobscripts/{JS}'.format(SUBJ=sys.argv[1],JS=this_js))
+    os.system('sed -i "s/WALKNUM/{WALKNUM}/g" all_jobscripts/{JS}'.format(WALKNUM=fileName,JS=this_js))
+    os.system('sbatch all_jobscripts/{JS}'.format(JS=this_js))
