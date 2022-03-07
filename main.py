@@ -25,9 +25,11 @@ for subjWalkDir in subjWalkList:
             skip_rest=True
         
         if not skip_rest:
-            points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
-            pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
-            pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
+            try:
+                points,cens,orig2alignedMat = applyOptimalRotation(points,cens,rotms,subjWalkDir)
+                pupilShadowMeshMat_dict = alignPupilShadowMesh(points,cens,rotms,subjWalkDir,orig2alignedMat)
+                pupilShadowMeshMat_dict = computeGazeXYZ(pupilShadowMeshMat_dict,subjWalkDir)
 
-            saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
-            
+                saveMatFile(pupilShadowMeshMat_dict,subjWalkDir)
+            except:
+                pass
